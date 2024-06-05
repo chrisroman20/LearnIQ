@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+
+<div class="d-flex flex-column  align-items-center vh-100 py-5">
+    <div class="gap-5 d-flex flex-column align-items-center justify-content-center w-100 text-white my-3">
+
+        <div class="innerShadow next-logo">
+            <a href="{% url 'HomePage' %}"> 
+                <img src="#" width="150">
+            </a>
+        </div>
+
+        <div class="innerShadow next-logo">
+            <p class="h4 fw-light">
+                Unlocking the power of your mind
+            </p>
+        </div>
+
+    </div>
+    <div class="p-4 rounded my-5" style="width: 300px; background-color: #1D1D1D;">
+        {% if messages %}
+        <div class="alert alert-danger" role="alert">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="d-flex flex-column ">
+            <div>
+                <h4>
+                    Sign in
+                </h4>
+            </div>
+            <div class="d-flex flex-column gap-1">
+                <form id="login" method="POST">
+                    {% csrf_token %}
+                    <div>
+                        
+                        <label for="userMail" class="form-label text-white-50">Username</label>
+                        
+                        <input type="text" class="form-control bg-dark rounded-pill border border-dark text-white"
+                            id="userMail" name="userMail" placeholder="Email" required>
+                        
+                            <label for="userPassword" class="form-label text-white-50">Password</label>
+                        
+                        <input type="password" class="form-control bg-dark rounded-pill border border-dark text-white"
+                            id="userPassword" name="userPassword" placeholder="Password" required>
+
+                    </div>
+
+                    <div class="d-flex flex-column gap-3 mt-4 justify-content-between">
+                        <button class="btn btn-primary rounded-pill" type="submit">Sign In</button>
+                        <a class="btn btn-secondary rounded-pill" href="{% url 'Auth:signUp' %}">Sign Up</a>
+                    </div>
+
+                    <div class="d-flex mt-3 w-100 justify-content-center">
+                        <a href="" for="exampleInputPassword1" class="text-primary">I forgot my password</a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center  align-items-center ">
+    <div class="col-4">
+        <div class="innerShadow next-logo">
+            <a href="{% url 'HomePage' %}">
+                <img src="#" width="150">
+            </a>
+        </div>
+
+        <div class="innerShadow next-logo">
+            <i class="h4 fw-light">
+                Unlocking the power of your mind
+            </i>
+        </div>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger alert-dismissible fade show " role="alert">
+            <strong>{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="col-8">
+        <div class="rounded p-3" style="background-color: #1D1D1D;">
+            
+            <form id="registrationForm" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="container ">
+                    <div class="row align-items-center justify-content-center my-3">
+                        <div class="col-3 text-center ">
+                            <h3>Sign Up</h3>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-6 justify-content-center align-items-center">
+                            <img id="profileImage" src="{% static 'img/default-img.jpg' %}" class="img-fluid rounded-circle mx-auto d-block mb-2" style="width: 200px;" alt="Default User Image">
+                        </div>
+                        <div class="col-6 justify-content-center align-items-center">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="userRole" name="userRole" value="1">
+                                <label class="form-check-label" for="userRole">Is admin?</label>
+                            </div>
+                            <label for="image" class="form-label text-white-50">Select an image (Max. 2 mb.)</label>
+                            <input class="form-control bg-dark rounded-pill border border-dark text-white" type="file" id="image" name="image" accept="image/*">
+                            <label for="userName" class="form-label text-white-50">Username</label>
+                            <input class="form-control bg-dark rounded-pill border border-dark text-white" type="text" id="userName" name="userName" placeholder="Username" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="Name" class="form-label text-white-50">Name</label>
+                            <input class="form-control bg-dark rounded-pill border border-dark text-white" type="text" id="Name" name="Name" placeholder="Name" required>
+            
+                            <label for="LastName" class="form-label text-white-50">Last Name</label>
+                            <input class="form-control bg-dark rounded-pill border border-dark text-white" type="text" id="LastName" name="LastName" placeholder="Last Name" required>
+                            <label for="Phone" class="form-label text-white-50">Phone</label>
+            
+                            <input class="form-control bg-dark rounded-pill border border-dark text-white" type="text" id="Phone" name="Phone" placeholder="Phone" required>
+                        </div>
+                        <div class="col-6">
+                            <label for="Mail" class="form-label text-white-50">Email address</label>
+                            <input class="form-control bg-dark rounded-pill border border-dark text-white" type="email" id="Mail" name="Mail" placeholder="Email" required>
+            
+                            <label for="Password" class="form-label text-white-50">Password</label>
+                            <input class="form-control bg-dark rounded-pill border border-dark text-white" type="password" id="Password" name="Password" placeholder="Password" required>
+            
+                            <label for="confirmPassword" class="form-label text-white-50">Confirm Password</label>
+                            <input class="form-control bg-dark rounded-pill border border-dark text-white" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                        </div>
+                    </div>
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-6 d-flex flex-column gap-3 mt-4 justify-content-between">
+                            <button type="submit" class="btn btn-primary rounded-pill">Sign Up</button>
+                            <a href="{% url 'Auth:signIn' %}" class="btn btn-secondary rounded-pill">Sign In</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+
+
+        </div>
+    </div>
+</div>
+
+
+<script src="{% static 'js/Auth/login.js' %}"></script>
+<script>
+
+    document.getElementById('image').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('profileImage').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    var password = document.getElementById('Password').value;
+    var confirmPassword = document.getElementById('confirmPassword').value;
+    if (password !== confirmPassword) {
+        event.preventDefault();
+        alert('Passwords do not match!');
+        return;
+    }
+
+    var imageInput = document.getElementById('image');
+    if (imageInput.files.length > 0) {
+        var fileSize = imageInput.files[0].size / 1024 / 1024; // en MB
+        if (fileSize > 2) {
+            event.preventDefault();
+            alert('Image size should not exceed 2MB!');
+            return;
+        }
+        }
+    });
+
+
+</script>
+
+{% endblock %}
