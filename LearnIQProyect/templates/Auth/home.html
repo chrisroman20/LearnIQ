@@ -3,11 +3,34 @@
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
-<div class="col-12">
-    <h1>Welcome to LearnIQ</h1>
-    <p>LearnIQ is a platform that allows you to learn and improve your skills in different areas.</p>
-    <p>Here you can find courses, tutorials, and exercises to help you improve your skills.</p>
-    <p>Start learning now!</p>
+< class="col-12">
+        <div class="card bg-body-tertiary">
+            <div class="card-body">
+                <h5 class="card-title">Welcome to LearnIQ</h5>
+                <p class="card-text">LearnIQ is a platform where you can learn and practice your skills in different
+                    programming languages.</p>
+                <a href="{% url 'Auth:signUp' %}" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    
+        <div class="card bg-body-tertiary mt-3">
+            <div class="card-body">
+                <h5 class="card-title">Features</h5>
+                <p class="card-text">LearnIQ has a lot of features that will help you to improve your programming skills.
+                </p>
+                <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+    
+        <div class="card bg-body-tertiary mt-3">
+            <div class="card-body">
+                <h5 class="card-title">Pricing</h5>
+                <p class="card-text">LearnIQ is free to use. You can learn and practice your skills without any cost.</p>
+                <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>  
+    
+    
 
     <figure class="text-center">
         <blockquote class="blockquote">

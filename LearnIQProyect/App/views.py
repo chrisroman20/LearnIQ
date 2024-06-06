@@ -20,3 +20,18 @@ class Home(View):
         self.context = {
         }
         return render(request,self.template_name, self.context)
+    
+    
+@method_decorator(login_required(login_url='/login/'), name='dispatch')
+class AppTest(View):
+    template_name = 'App/appTest.html'
+    context = {}
+    def get(self, request):
+        self.context = {
+        }
+        return render(request,self.template_name, self.context)
+    
+    def post(self, request):
+        self.context = {
+        }
+        return render(request,self.template_name, self.context)

@@ -78,7 +78,7 @@ class LogIn(View):
 @login_required 
 def logout_view(request):
     logout(request)
-    return redirect('start')  # Redirigir a la página principal después de cerrar sesión
+    return redirect('HomePage')  # Redirigir a la página principal después de cerrar sesión
 
     
 class ResetPassword(View):
