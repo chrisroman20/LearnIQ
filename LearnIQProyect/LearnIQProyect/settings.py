@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'LearnIQProyect.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),   # O la IP de tu servidor de base de datos
-        'PORT': os.getenv('DB_PORT')        # El puerto de MySQL generalmente es el 3306
+        'NAME': 'LearnIQ',
+        'USER': 'postgres',
+        'PASSWORD': 'Hris201202',
+        'HOST': 'localhost',   # O la IP de tu servidor de base de datos
+        'PORT': '5432' # El puerto de MySQL generalmente es el 3306
     }
 }
 
