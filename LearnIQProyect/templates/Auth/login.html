@@ -1,27 +1,24 @@
-{% extends 'base.html' %}
+{% extends 'base_nonav.html' %}
 
-{% block title %}Home Page{% endblock %}
+{% block title %}Sign In{% endblock %}
 
 {% block content %}
 
 
-<div class="d-flex flex-column  align-items-center vh-100 py-5">
-    <div class="gap-5 d-flex flex-column align-items-center justify-content-center w-100 text-white my-3">
+<div class="d-flex flex-column  align-items-center vh-100">
+    <div class="gap-5 d-flex flex-column align-items-center justify-content-center w-100 text-white">
+        <a href="{% url 'HomePage' %}" class="noDecoration">
+            <div class=" shadow-lg bg-light rounded-5 p-5">
+                <img class="brand-logo img-fluid">
+                <h3 class="text-center text-dark">
+                    Unlocking the power of your mind
+                </h3>
+            </div>
+        </a>
 
-        <div class="innerShadow next-logo">
-            <a href="{% url 'HomePage' %}"> 
-                <img src="#" width="150">
-            </a>
-        </div>
-
-        <div class="innerShadow next-logo">
-            <p class="h4 fw-light">
-                Unlocking the power of your mind
-            </p>
-        </div>
 
     </div>
-    <div class="p-4 rounded my-5" style="width: 300px; background-color: #1D1D1D;">
+    <div class="p-4  shadow my-5 bg-dark rounded-5" >
         {% if messages %}
         <div class="alert alert-danger" role="alert">
             {% for message in messages %}
@@ -30,25 +27,25 @@
         </div>
         {% endif %}
 
-        <div class="d-flex flex-column ">
+        <div class="d-flex flex-column " style="width: 300px;">
             <div>
-                <h4>
+                <h4 class="text-white">
                     Sign in
                 </h4>
             </div>
-            <div class="d-flex flex-column gap-1">
+            <div class="d-flex flex-column">
                 <form id="login" method="POST">
                     {% csrf_token %}
                     <div>
-                        
+
                         <label for="userMail" class="form-label text-white-50">Username</label>
-                        
-                        <input type="text" class="form-control bg-dark rounded-pill border border-dark text-white"
+
+                        <input type="text" class="form-control bg-light rounded-pill border border-dark text-white"
                             id="userMail" name="userMail" placeholder="Email" required>
-                        
-                            <label for="userPassword" class="form-label text-white-50">Password</label>
-                        
-                        <input type="password" class="form-control bg-dark rounded-pill border border-dark text-white"
+
+                        <label for="userPassword" class="form-label text-white-50">Password</label>
+
+                        <input type="password" class="form-control bg-light rounded-pill border border-dark text-white"
                             id="userPassword" name="userPassword" placeholder="Password" required>
 
                     </div>
@@ -59,11 +56,12 @@
                     </div>
 
                     <div class="d-flex mt-3 w-100 justify-content-center">
-                        <a href="" for="exampleInputPassword1" class="text-primary">I forgot my password</a>
+                        <a href="" for="exampleInputPassword1" class="text-primary noDecoration">I forgot my password</a>
                     </div>
                 </form>
 
             </div>
         </div>
     </div>
-{% endblock %}
+</div>
+    {% endblock %}

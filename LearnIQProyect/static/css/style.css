@@ -3,3 +3,92 @@ body {
     src: url(/LearnIQProyect/static/font/Montserrat/static/Montserrat-Thin.ttf);
     
 }
+
+#contenedorPrincipal-1 {
+    background-image: url('../img/Fondo (2).png');
+    background-size: cover;
+    background-position: center;
+}
+
+#contenedorPrincipal-2 {
+    background-image: url('../img/Fondo.png');
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 576px) {
+    nav a img {
+        content: url('../img/Logo/Logo pequeno.png');
+
+    }
+}
+
+/* Estilos para tabletas */
+@media (min-width: 577px) and (max-width: 991px) {
+    nav a img {
+        content: url('../img/Logo/Logo pequeno.png');
+    }
+}
+
+/* Estilos para pantallas pequeñas */
+@media (min-width: 992px) and (max-width: 1199px) {
+    nav a img {
+        content: url('../img/Logo/Logo principal alargado.png');
+    }
+}
+
+/* Estilos para pantallas medianas */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    nav a img {
+        content: url('../img/Logo/Logo principal alargado.png');
+    }
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 1400px) {
+    nav a img {
+        content: url('../img/Logo/Logo principal alargado.png');
+    }
+}
+
+
+
+
+
+/* Mostrar el texto para móviles solo en dispositivos móviles */
+.logo-mobile {
+    display: none;
+}
+
+@media (max-width: 991px) {
+    .logo-desktop {
+        display: none;
+    }
+    .logo-mobile {
+        display: inline-block;
+        color: #28a745;
+        font-size: 28px; 
+        font-weight: bold; 
+        margin-left: 0.5rem; 
+    }
+}
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+.noDecoration {
+    text-decoration: none;
+}
+
+
+
+
+
+.brand-logo {
+    width: 30rem;
+    margin-left: 10px;
+    border-radius: 10px;
+    content: url('../img/Logo/Logo principal alargado.png');
+}

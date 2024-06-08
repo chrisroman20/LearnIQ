@@ -1,2 +1,6 @@
 /venv
 .env
+/Auth/__pycache__/
+/App/__pycache__/
+/LearnIQProyect/__pycache__/
+/Users/__pycache__/
