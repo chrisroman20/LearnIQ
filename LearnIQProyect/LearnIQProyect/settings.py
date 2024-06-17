@@ -143,3 +143,5 @@ AUTH_USER_MODEL = 'Users.User'
 # Configuración de la MEDIA
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+

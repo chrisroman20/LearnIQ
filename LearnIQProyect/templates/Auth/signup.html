@@ -14,15 +14,16 @@
                 </h3>
             </div>
         </a>
-        {% if messages %}
+        
+    </div>
+    {% if messages %}
         {% for message in messages %}
         <div class="alert alert-danger alert-dismissible fade show " role="alert">
             <strong>{{ message }}</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endfor %}
-        {% endif %}
-    </div>
+    {% endif %}
     <div class="col-8">
         <div class="rounded p-3 text-light bg-dark">
             
@@ -46,29 +47,29 @@
                             <label for="image" class="form-label text-white-50">Select an image (Max. 2 mb.)</label>
                             <input class="form-control  rounded-pill border border-primary text-white" type="file" id="image" name="image" accept="image/*">
                             <label for="userName" class="form-label text-white-50">Username</label>
-                            <input class="form-control  rounded-pill border border-primary text-white" type="text" id="userName" name="userName" placeholder="Username" required>
+                            <input class="form-control  rounded-pill border border-primary " type="text" id="userName" name="userName" placeholder="Username" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <label for="Name" class="form-label text-white-50">Name</label>
-                            <input class="form-control  rounded-pill border border-primary text-white" type="text" id="Name" name="Name" placeholder="Name" required>
+                            <input class="form-control  rounded-pill border border-primary " type="text" id="Name" name="Name" placeholder="Name" required>
             
                             <label for="LastName" class="form-label text-white-50">Last Name</label>
-                            <input class="form-control  rounded-pill border border-primary text-white" type="text" id="LastName" name="LastName" placeholder="Last Name" required>
-                            <label for="Phone" class="form-label text-white-50">Phone</label>
+                            <input class="form-control  rounded-pill border border-primary " type="text" id="LastName" name="LastName" placeholder="Last Name" required>
+                            <label for="Phone" class="form-label -50">Phone</label>
             
-                            <input class="form-control  rounded-pill border border-primary text-white" type="text" id="Phone" name="Phone" placeholder="Phone" required>
+                            <input class="form-control  rounded-pill border border-primary " type="text" id="Phone" name="Phone" placeholder="Phone" required>
                         </div>
                         <div class="col-6">
                             <label for="Mail" class="form-label text-white-50">Email address</label>
-                            <input class="form-control  rounded-pill border border-primary text-white" type="email" id="Mail" name="Mail" placeholder="Email" required>
+                            <input class="form-control  rounded-pill border border-primary " type="email" id="Mail" name="Mail" placeholder="Email" required>
             
                             <label for="Password" class="form-label text-white-50">Password</label>
-                            <input class="form-control  rounded-pill border border-primary text-white" type="password" id="Password" name="Password" placeholder="Password" required>
+                            <input class="form-control  rounded-pill border border-primary " type="password" id="Password" name="Password" placeholder="Password" required>
             
                             <label for="confirmPassword" class="form-label text-white-50">Confirm Password</label>
-                            <input class="form-control  rounded-pill border border-primary text-white" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                            <input class="form-control  rounded-pill border border-primary " type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
                         </div>
                     </div>
                     <div class="row align-items-center justify-content-center">
