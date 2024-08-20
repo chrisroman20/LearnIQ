@@ -32,7 +32,7 @@
         <div class="d-flex flex-column " style="width: 300px;">
             <div>
                 <h4 class="text-white">
-                    Sign in
+                    Iniciar sesión
                 </h4>
             </div>
             <div class="d-flex flex-column">
@@ -40,7 +40,7 @@
                     {% csrf_token %}
                     <div>
                         <div class="row align-items-center">
-                            <label for="userMail" class="form-label text-white-50">Username</label>
+                            <label for="userMail" class="form-label text-white-50">Usuario</label>
 
                             <div class="col-1 text-light">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
@@ -52,13 +52,13 @@
                             <div class="col-11">
                                 <input type="text"
                                     class="form-control bg-light rounded-pill border border-dark "
-                                    id="userMail" name="userMail" placeholder="Email" required>
+                                    id="userMail" name="userMail" placeholder="Usuario" required>
 
                             </div>
                         </div>
 
                         <div class="row align-items-center">
-                            <label for="userPassword" class="form-label text-white-50">Password</label>
+                            <label for="userPassword" class="form-label text-white-50">Contraseña</label>
 
                             <div class="col-1 text-light">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -70,19 +70,19 @@
                             <div class="col-11">
                                 <input type="password"
                                     class="form-control bg-light rounded-pill border border-dark "
-                                    id="userPassword" name="userPassword" placeholder="Password" required>
+                                    id="userPassword" name="userPassword" placeholder="Contraseña" required>
                             </div>
                         </div>
                     </div>
 
                     <div class="d-flex flex-column gap-3 mt-4 justify-content-between">
-                        <button class="btn btn-primary rounded-pill" type="submit">Sign In</button>
-                        <a class="btn btn-secondary rounded-pill" href="{% url 'Auth:signUp' %}">Sign Up</a>
+                        <button class="btn btn-primary rounded-pill" type="submit">Iniciar sesión</button>
+                        <a class="btn btn-secondary rounded-pill" href="{% url 'Auth:signUp' %}">Registrarse</a>
                     </div>
 
                     <div class="d-flex mt-3 w-100 justify-content-center">
                         <a href="{% url 'Auth:resetPassword' %}" for="exampleInputPassword1"
-                            class="text-primary noDecoration">I forgot my password</a>
+                            class="text-primary noDecoration">¿Olvidaste tu contraseña?</a>
                     </div>
                 </form>
 

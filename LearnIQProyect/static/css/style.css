@@ -19,40 +19,53 @@ body {
 
 /* Estilos para dispositivos móviles */
 @media (max-width: 576px) {
-    nav a img {
+    .LogoNavbar {
         content: url('../img/Logo/Logo pequeno.png');
-
+    }
+    body {
+        font-size: 14px; /* Tamaño de fuente para dispositivos móviles */
     }
 }
 
 /* Estilos para tabletas */
 @media (min-width: 577px) and (max-width: 991px) {
-    nav a img {
+    .LogoNavbar {
         content: url('../img/Logo/Logo pequeno.png');
+    }
+    body {
+        font-size: 16px; /* Tamaño de fuente para tabletas */
     }
 }
 
 /* Estilos para pantallas pequeñas */
 @media (min-width: 992px) and (max-width: 1199px) {
-    nav a img {
+    .LogoNavbar {
         content: url('../img/Logo/Logo principal alargado.png');
+    }
+    body {
+        font-size: 16px; /* Tamaño de fuente para pantallas pequeñas */
     }
 }
 
 /* Estilos para pantallas medianas */
 @media (min-width: 1200px) and (max-width: 1399px) {
-    nav a img {
+    .LogoNavbar {
         content: url('../img/Logo/Logo principal alargado.png');
+    }
+    body {
+        font-size: 16px; /* Tamaño de fuente para pantallas medianas */
     }
 }
 
 /* Estilos para pantallas grandes */
 @media (min-width: 1400px) {
-    nav a img {
+    .LogoNavbar {
         content: url('../img/Logo/Logo principal alargado.png');
     }
+    body {
+        font-size: 16px; /* Tamaño de fuente para pantallas grandes */
+    }
 }
-
 
 
 

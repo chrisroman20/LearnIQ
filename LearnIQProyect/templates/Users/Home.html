@@ -1,0 +1,62 @@
+{% extends 'base.html'%}
+
+{% block title %}Perfil{% endblock %}
+
+{% block content %}
+{% if messages %}
+<div class="alert alert-danger" role="alert">
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+</div>
+{% endif %}
+<!-- <div class="row justify-content-center">
+    <div class="col-auto text-light ">
+        <h1><b>User profile</b></h1>
+    </div>
+</div> -->
+<div class="p-3 p-md-0">
+    <div class="row border p-5  rounded flex-column flex-md-row">
+        <div class="col-12 col-md-3 text-center text-md-center">
+            <img class="img-fluid rounded-circle mb-4" src="{{ user.image.url }}" width="250" height="250">
+            <a class="btn btn-outline-primary" href="{% url 'Users:EditUser' user.id %}">
+                Editar perfil
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                    <path fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                </svg>
+            </a>
+        </div>
+        <div class="col-12 col-md-9 mt-3 mt-md-0 d-flex flex-column justify-content-center align-items-center text-center">
+            <div class="row  border rounded align-items-center p-1">
+                <h3 class="text-light mt-2">
+                    <b>{{ user.username }}</b>
+                    <span class="badge text-bg-primary">{{ user.UserRol }}</span>
+                </h3>
+            </div>
+            <div class="row align-items-center mt-2">
+                <div class="row mt-2 text-start text-md-start text-light">
+                    <h5><b>Nombre:</b> {{ user.first_name }} {{ user.last_name }}</h5>
+                </div>
+                <div class="row mt-2 text-start text-md-start text-light">
+                    <h5><b>Correo electrónico:</b> {{ user.email }}</h5>
+                </div>
+                <div class="row mt-2 text-start text-md-start text-light">
+                    <h5><b>Teléfono:</b> {{ user.phone }}</h5>
+                </div>
+                <div class="row mt-2 text-start text-md-start text-light">
+                    <h5>Te uniste {{ user.date_joined }}</h5>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row border p-5 my-4 rounded">
+        <div class="form-control">nmsdhjdsj</div>
+    </div>
+</div>
+
+{% endblock %}

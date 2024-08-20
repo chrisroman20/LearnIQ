@@ -86,8 +86,7 @@ class LogIn(View):
 @login_required 
 def logout_view(request):
     logout(request)
-    return redirect('HomePage')  # Redirigir a la página principal después de cerrar sesión
-
+    return redirect('HomePage')  
     
 class ResetPassword(View):
     template_name = "Auth/resetPassword.html"
@@ -125,7 +124,7 @@ class ChangePassword(View):
         IsValidToken = Token.objects.filter(token=token).exists()
 
         if IsValidToken:
-            ObjToken = Token.objects.get(token=token)[0]
+            ObjToken = Token.objects.get(token=token)
             if ObjToken.status:
                 messages.error(request, 'The token has already been used.')
                 return redirect('Auth:resetPassword')
@@ -140,7 +139,7 @@ class ChangePassword(View):
         if password != password2:
             messages.error(request, 'The passwords do not match.')
             return render(request, self.template_name, self.context)
-        IsValidToken = Token.objects.get(token=token).exists()
+        IsValidToken = Token.objects.filter(token=token).exists()
         if IsValidToken:
             ObjToken = Token.objects.get(token=token)   
             if ObjToken.status and ObjToken.tipoToken == 'EMAIL':

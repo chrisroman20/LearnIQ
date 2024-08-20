@@ -22,7 +22,7 @@ class Home(View):
         return render(request,self.template_name, self.context)
     
     
-@method_decorator(login_required(login_url='/login/'), name='dispatch')
+
 class AppTest(View):
     template_name = 'App/appTest.html'
     context = {}

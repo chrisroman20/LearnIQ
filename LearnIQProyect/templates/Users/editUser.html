@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Cuenta{% endblock %}
+
+{% block content %}
+
+
+    <div class="">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="fs-5">Edit User Profile</h1>
+            </div>
+            <div class="card-body">
+                <form id="profileForm" method="POST" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %} 
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Profile Image</label>
+                        <div class="d-flex align-items-center gap-2">
+                            <img id="profileImage" class="p-0 m-0 img-fluid rounded-circle" width="50px" src="{{ user.image.url }}">
+                            <input class="w-25 form-control text-dark rounded-pill border" type="file" id="image" name="image" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="first_name" class="form-label">First Name</label>
+                        <input type="text" name="first_name" id="first_name" value="{{ user.first_name }}" class="form-control" required>
+                        <div class="invalid-feedback">
+                            Please provide a first name.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="last_name" class="form-label">Last Name</label>
+                        <input type="text" name="last_name" id="last_name" value="{{ user.last_name }}" class="form-control" required>
+                        <div class="invalid-feedback">
+                            Please provide a last name.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" id="email" value="{{ user.email }}" class="form-control" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid email.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="text" name="phone" id="phone" value="{{ user.phone }}" class="form-control" required>
+                        <div class="invalid-feedback">
+                            Please provide a phone number.
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('profileForm');
+            var imageInput = document.getElementById('image');
+            var profileImage = document.getElementById('profileImage');
+
+            // Validación del formulario
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    showValidationDialog();
+                }
+                form.classList.add('was-validated');
+            }, false);
+
+            // Mostrar diálogo de validación
+            function showValidationDialog() {
+                alert('Please fill out all required fields.');
+            }
+
+            // Actualización en tiempo real de la imagen del perfil
+            imageInput.addEventListener('change', function() {
+                var file = imageInput.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        profileImage.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }, false);
+    </script>
+
+{% endblock %}
