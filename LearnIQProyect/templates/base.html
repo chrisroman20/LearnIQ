@@ -9,7 +9,10 @@
   <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <link rel="icon" href="{% static 'img/Logo/Logo-pequeno.ico' %}" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  
+  {% block header %} {% endblock %} 
 </head>
 
 <body class="bg-dark" id="contenedorPrincipal-1">
@@ -37,7 +40,7 @@
               {% endif %}
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Estilos de aprendizaje</a>
+              <a class="nav-link" href="{% url 'App:Informacion' %}">Estilos de aprendizaje</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'App:AppTest' %}">Hacer prueba</a>
