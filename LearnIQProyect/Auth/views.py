@@ -15,7 +15,7 @@ from Users.models import Token
 # Create your views here.
 
 class Home(View):
-    template_name = 'Auth/home.html'
+    template_name = 'App/appHome.html'
     context = {}
     def get(self, request):
         self.context = {
