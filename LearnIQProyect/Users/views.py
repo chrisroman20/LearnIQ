@@ -7,6 +7,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.files.storage import FileSystemStorage
+
+from .models import UserStyle
+
 # Create your views here.
 
 def validate_user(request, id):
@@ -19,8 +22,14 @@ class Home(View):
     template_name = 'Users/home.html'
     context = {}
     def get(self, request):
+        try:
+            styleLearning = UserStyle.objects.get(user=request.user)
+        except UserStyle.DoesNotExist:
+            styleLearning = None
+            
         self.context = {
-            "user": request.user
+            "user": request.user,
+            "styleLearning": styleLearning
         }
         return render(request,self.template_name, self.context)
     
@@ -48,7 +57,6 @@ class EditUser(View):
         
     def post(self, request, id):
 
-        # Actualizar usuario
         user = request.user
         if validate_user(request, id):
             UserModel = get_user_model()

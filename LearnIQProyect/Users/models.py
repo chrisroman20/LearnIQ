@@ -1,6 +1,8 @@
+import json
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
+from App.models import LearningStyles
 
 # Create your models here.
 
@@ -31,9 +33,21 @@ class Token(models.Model):
             self.token = generateToken()
         super().save(*args, **kwargs)
 
+class UserStyle(models.Model):
+    values = models.JSONField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    learningStyle = models.ForeignKey(LearningStyles, on_delete=models.CASCADE)
+
+    def set_datos(self, diccionario):
+        self.datos = json.dumps(diccionario)
+    
+    def get_datos(self):
+        return json.loads(self.datos)
 
 def generateToken():
     while True:
         tokenGenerado = uuid.uuid4().hex
         if not Token.objects.filter(token=tokenGenerado).exists():
             return tokenGenerado
+        

@@ -108,3 +108,68 @@ body {
     border-radius: 10px;
     content: url('../img/Logo/Logo principal alargado.png');
 }
+
+
+/* Estilos para test */
+
+
+#intro-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #343a40;
+    color: white;
+    z-index: 1000;
+    transition: opacity 1s ease-in-out;
+}
+
+
+
+.intro-text {
+    font-size: 2.5rem;
+    animation: pulse 2s infinite;
+}
+
+.pulso {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+#quiz-wrapper {
+    display: none;
+}
+
+.progress {
+    height: 25px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: green;
+    transition: width 1s linear, background-color 1s linear;
+}
+
+#media-container img,
+#media-container video,
+#media-container audio {
+    max-width: 100%;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#learning-style-graph {
+    max-width: 100%; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+

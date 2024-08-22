@@ -58,44 +58,44 @@ class Informacion(View):
     
 
 def graficar_radar_estilos_aprendizaje(request):
-    # Datos de ejemplo de los estilos de aprendizaje
+    # Obtener los datos del test desde los parámetros GET
+    visual = int(round(float(request.GET.get('visual', 0))))
+    auditivo = int(round(float(request.GET.get('auditivo', 0))))
+    kinestesico = int(round(float(request.GET.get('kinestesico', 0))))
+
+    print(visual, auditivo, kinestesico)
     datos = {
-        'Visual': 29,
-        'Auditivo': 36,
-        'Kinestésico': 40,
+        'Visual': visual,
+        'Auditivo': auditivo,
+        'Kinestésico': kinestesico,
     }
 
-    # Nombres de las categorías
     etiquetas = list(datos.keys())
     valores = list(datos.values())
 
     # Añadir el primer valor al final para cerrar el círculo
     valores += valores[:1]
 
-    # Ángulos para cada categoría
     angulos = np.linspace(0, 2 * np.pi, len(etiquetas), endpoint=False).tolist()
     angulos += angulos[:1]
 
-    # Crear la figura y el gráfico de radar
+    # Determinar el rango del eje radial basado en el valor máximo
+    max_valor = max(valores)
+    rango = max(30, max_valor)  # Asegúrate de que el rango mínimo sea 50 o el valor máximo
+
     fig, ax = plt.subplots(figsize=(5, 5), subplot_kw=dict(polar=True))
-
-    # Ajustar los límites del eje radial
-    ax.set_ylim(0, 50)  # Ajusta el rango según sea necesario
-
-    # Dibujar el gráfico de radar
+    ax.set_ylim(0, rango)  # Ajusta el rango según el valor máximo
     ax.fill(angulos, valores, color='blue', alpha=0.1)
     ax.plot(angulos, valores, color='blue', linewidth=0.2)
 
-    # Personalización de las etiquetas y el estilo
-    ax.set_yticks([10, 20, 30, 40, 50])  # Configura el número de ejes radiales visibles
-    ax.set_yticklabels(['10', '20', '30', '40', '50'], fontsize=8)  # Mostrar los valores en los anillos
-
+    # Configurar los ticks del eje radial
+    ticks = np.linspace(0, rango, num=5)
+    ax.set_yticks(ticks)
+    ax.set_yticklabels([str(int(tick)) for tick in ticks], fontsize=8)
     ax.set_xticks(angulos[:-1])
     ax.set_xticklabels(etiquetas, fontsize=11)
-
-    # Ajustar los límites del gráfico para que no se vea circular
-    ax.spines['polar'].set_visible(False)  # Oculta la línea circular externa
-    ax.set_theta_offset(np.pi / 4)  # Rota el gráfico para alinearlo mejor
+    ax.spines['polar'].set_visible(False)
+    ax.set_theta_offset(np.pi / 4)
 
     buf = io.BytesIO()
     canvas = FigureCanvas(fig)

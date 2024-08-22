@@ -1,10 +1,37 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}Prueba{% endblock %}
+{% block title %}Cuestionario{% endblock %}
 
 {% block content %}
 
-<img src="{% url 'App:GraficarRadar' %}" class="rounded-5 img-fluid" alt="Gráfico de Radar de Estilos de Aprendizaje">
+<div id="intro-container" class="d-flex justify-content-center align-items-center">
+    <div class="text-center">
+        <img src="{% static 'img/Logo/Logo pequeno.png' %}" alt="LearnIQ Logo" class="img-fluid rounded-5 w-25 mb-4" >
+        <h1 class="intro-text fw-bold">¡Bienvenido al cuestionario de estilos de aprendizaje!</h1>
+        <h1 class="intro-text fw-bold">¿Estás listo?</h1>
+        <button id="start-button" class="btn btn-primary mt-4">Comenzar</button>
 
+    </div>
+</div>
+
+<div class="container mt-5" style="display: none;" id="quiz-wrapper">
+    <div id="quiz-container" class="card shadow-lg">
+        <div class="card-body text-center">
+            <h1 id="question" class="card-title"></h1>
+            <div id="media-container" class="my-4"></div>
+            <div class="progress mb-4">
+                <div id="timer-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"></div>
+            </div>
+            <div id="buttons-container">
+                <button class="btn btn-primary btn-lg mb-2 w-100" onclick="selectAnswer(0)">Respuesta 1</button>
+                <button class="btn btn-primary btn-lg mb-2 w-100" onclick="selectAnswer(1)">Respuesta 2</button>
+                <button class="btn btn-primary btn-lg mb-2 w-100" onclick="selectAnswer(2)">Respuesta 3</button>
+                <button class="btn btn-primary btn-lg w-100" onclick="selectAnswer(3)">Respuesta 4</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/test.js' %}"></script>
 
 {% endblock %}

@@ -1,0 +1,200 @@
+{
+    "modules": [
+      {
+        "type": "visual",
+        "questions": [
+          {
+            "text": "¿Qué figura es un triángulo?",
+            "media": "<img src='/static/images/triangle.jpg' alt='Figura geométrica'>",
+            "options": ["Figura A", "Figura B", "Figura C", "Figura D"],
+            "correct_option": 0
+          },
+          {
+            "text": "¿Cuál de estas imágenes representa un círculo?",
+            "media": "<img src='/static/images/circle.jpg' alt='Figura geométrica'>",
+            "options": ["Figura A", "Figura B", "Figura C", "Figura D"],
+            "correct_option": 1
+          },
+          {
+            "text": "Selecciona la imagen que muestra un cuadrado.",
+            "media": "<img src='/static/images/square.jpg' alt='Figura geométrica'>",
+            "options": ["Figura A", "Figura B", "Figura C", "Figura D"],
+            "correct_option": 2
+          },
+          {
+            "text": "¿Qué imagen muestra un pentágono?",
+            "media": "<img src='/static/images/pentagon.jpg' alt='Figura geométrica'>",
+            "options": ["Figura A", "Figura B", "Figura C", "Figura D"],
+            "correct_option": 3
+          },
+          {
+            "text": "¿Cuál de estas imágenes representa una estrella?",
+            "media": "<img src='/static/images/star.jpg' alt='Figura geométrica'>",
+            "options": ["Figura A", "Figura B", "Figura C", "Figura D"],
+            "correct_option": 0
+          },
+          {
+            "text": "Selecciona la imagen que muestra un hexágono.",
+            "media": "<img src='/static/images/hexagon.jpg' alt='Figura geométrica'>",
+            "options": ["Figura A", "Figura B", "Figura C", "Figura D"],
+            "correct_option": 1
+          },
+          {
+            "text": "¿Qué imagen representa un rombo?",
+            "media": "<img src='/static/images/rhombus.jpg' alt='Figura geométrica'>",
+            "options": ["Figura A", "Figura B", "Figura C", "Figura D"],
+            "correct_option": 2
+          },
+          {
+            "text": "¿Cuál de estas imágenes es un trapecio?",
+            "media": "<img src='/static/images/trapezoid.jpg' alt='Figura geométrica'>",
+            "options": ["Figura A", "Figura B", "Figura C", "Figura D"],
+            "correct_option": 3
+          },
+          {
+            "text": "Selecciona la imagen que muestra una elipse.",
+            "media": "<img src='/static/images/ellipse.jpg' alt='Figura geométrica'>",
+            "options": ["Figura A", "Figura B", "Figura C", "Figura D"],
+            "correct_option": 0
+          },
+          {
+            "text": "¿Qué imagen muestra un decágono?",
+            "media": "<img src='/static/images/decagon.jpg' alt='Figura geométrica'>",
+            "options": ["Figura A", "Figura B", "Figura C", "Figura D"],
+            "correct_option": 1
+          }
+        ]
+      },
+      {
+        "type": "auditivo",
+        "questions": [
+          {
+            "text": "¿Qué nota musical es esta?",
+            "media": "<audio controls><source src='/static/audio/note_c.mp3' type='audio/mpeg'></audio>",
+            "options": ["Do", "Re", "Mi", "Fa"],
+            "correct_option": 0
+          },
+          {
+            "text": "¿Cuál es el sonido de una campana?",
+            "media": "<audio controls><source src='/static/audio/bell.mp3' type='audio/mpeg'></audio>",
+            "options": ["Campana", "Silbato", "Tambor", "Guitarra"],
+            "correct_option": 0
+          },
+          {
+            "text": "¿Qué instrumento suena aquí?",
+            "media": "<audio controls><source src='/static/audio/drum.mp3' type='audio/mpeg'></audio>",
+            "options": ["Piano", "Guitarra", "Tambor", "Flauta"],
+            "correct_option": 2
+          },
+          {
+            "text": "Identifica el sonido de un piano.",
+            "media": "<audio controls><source src='/static/audio/piano.mp3' type='audio/mpeg'></audio>",
+            "options": ["Piano", "Guitarra", "Tambor", "Violín"],
+            "correct_option": 0
+          },
+          {
+            "text": "¿Cuál es el sonido de un violín?",
+            "media": "<audio controls><source src='/static/audio/violin.mp3' type='audio/mpeg'></audio>",
+            "options": ["Violín", "Guitarra", "Flauta", "Tambor"],
+            "correct_option": 0
+          },
+          {
+            "text": "Identifica el sonido de una flauta.",
+            "media": "<audio controls><source src='/static/audio/flute.mp3' type='audio/mpeg'></audio>",
+            "options": ["Flauta", "Guitarra", "Piano", "Tambor"],
+            "correct_option": 0
+          },
+          {
+            "text": "¿Qué sonido hace un tambor?",
+            "media": "<audio controls><source src='/static/audio/drum.mp3' type='audio/mpeg'></audio>",
+            "options": ["Tambor", "Piano", "Guitarra", "Violín"],
+            "correct_option": 0
+          },
+          {
+            "text": "¿Cuál es el sonido de una guitarra?",
+            "media": "<audio controls><source src='/static/audio/guitar.mp3' type='audio/mpeg'></audio>",
+            "options": ["Guitarra", "Flauta", "Piano", "Violín"],
+            "correct_option": 0
+          },
+          {
+            "text": "Identifica el sonido de un clarinete.",
+            "media": "<audio controls><source src='/static/audio/clarinet.mp3' type='audio/mpeg'></audio>",
+            "options": ["Clarinete", "Guitarra", "Piano", "Flauta"],
+            "correct_option": 0
+          },
+          {
+            "text": "¿Qué sonido hace un saxofón?",
+            "media": "<audio controls><source src='/static/audio/saxophone.mp3' type='audio/mpeg'></audio>",
+            "options": ["Saxofón", "Clarinete", "Piano", "Violín"],
+            "correct_option": 0
+          }
+        ]
+      },
+      {
+        "type": "kinestesico",
+        "questions": [
+          {
+            "text": "¿Qué movimiento representa saltar?",
+            "media": "<video controls><source src='/static/video/jump.mp4' type='video/mp4'></video>",
+            "options": ["Correr", "Saltar", "Caminar", "Nadar"],
+            "correct_option": 1
+          },
+          {
+            "text": "¿Qué movimiento representa nadar?",
+            "media": "<video controls><source src='/static/video/swim.mp4' type='video/mp4'></video>",
+            "options": ["Correr", "Saltar", "Nadar", "Caminar"],
+            "correct_option": 2
+          },
+          {
+            "text": "¿Qué movimiento representa correr?",
+            "media": "<video controls><source src='/static/video/run.mp4' type='video/mp4'></video>",
+            "options": ["Correr", "Saltar", "Nadar", "Caminar"],
+            "correct_option": 0
+          },
+          {
+            "text": "¿Qué movimiento representa caminar?",
+            "media": "<video controls><source src='/static/video/walk.mp4' type='video/mp4'></video>",
+            "options": ["Correr", "Saltar", "Caminar", "Nadar"],
+            "correct_option": 2
+          },
+          {
+            "text": "¿Qué movimiento representa girar?",
+            "media": "<video controls><source src='/static/video/spin.mp4' type='video/mp4'></video>",
+            "options": ["Saltar", "Girar", "Correr", "Caminar"],
+            "correct_option": 1
+          },
+          {
+            "text": "¿Qué movimiento representa lanzar?",
+            "media": "<video controls><source src='/static/video/throw.mp4' type='video/mp4'></video>",
+            "options": ["Lanzar", "Correr", "Caminar", "Saltar"],
+            "correct_option": 0
+          },
+          {
+            "text": "¿Qué movimiento representa escalar?",
+            "media": "<video controls><source src='/static/video/climb.mp4' type='video/mp4'></video>",
+            "options": ["Escalar", "Correr", "Nadar", "Saltar"],
+            "correct_option": 0
+          },
+          {
+            "text": "¿Qué movimiento representa levantar?",
+            "media": "<video controls><source src='/static/video/lift.mp4' type='video/mp4'></video>",
+            "options": ["Levantar", "Correr", "Caminar", "Girar"],
+            "correct_option": 0
+          },
+          {
+            "text": "¿Qué movimiento representa empujar?",
+            "media": "<video controls><source src='/static/video/push.mp4' type='video/mp4'></video>",
+            "options": ["Empujar", "Correr", "Saltar", "Caminar"],
+            "correct_option": 0
+          },
+          {
+            "text": "¿Qué movimiento representa arrastrar?",
+            "media": "<video controls><source src='/static/video/drag.mp4' type='video/mp4'></video>",
+            "options": ["Arrastrar", "Girar", "Saltar", "Caminar"],
+            "correct_option": 0
+          }
+        ]
+      }
+    ]
+  }
+  

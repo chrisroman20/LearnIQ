@@ -16,7 +16,7 @@
     </div>
 </div> -->
 <div class="p-3 p-md-0">
-    <div class="row border p-5 rounded flex-column flex-md-row">
+    <div class="row border p-5  rounded flex-column flex-md-row">
         <div class="col-12 col-md-3 text-center text-md-center">
             <img class="img-fluid rounded-circle mb-4" src="{{ user.image.url }}" width="250" height="250">
             <a class="btn btn-outline-primary" href="{% url 'Users:EditUser' user.id %}">
@@ -55,36 +55,29 @@
         </div>
 
     </div>
-    <div class="row border p-5 my-4 rounded">
+    <div class="row border p-5 my-4 rounded bg-light-50">
+        {% if styleLearning %}
         <h3 class="text-light fw-bold text-md-center">Estilo de aprendizaje</h3>
         <div class="row">
             <div class="col-md-4 d-flex justify-content-center">
 
                 <div class="card shadow rounded-5" style="width: 24rem;">
-                    <img src="{% url 'App:GraficarRadar' %}" class="card-img-top rounded-5 img-fluid"
+                    <img src="" class="card-img-top rounded-5 img-fluid" id="learning-style-graph"
                         alt="Gráfico de Radar de Estilos de Aprendizaje">
                     <div class="card-body">
-                        <h5 class="card-title fw-bold text-primary">Auditivo</h5>
+                        <h5 class="card-title fw-bold text-primary">{{styleLearning.learningStyle.name}}</h5>
                         <hr>
-                        <p class="card-text">Resultados:</br>Visual: 10</br>Auditivo: 15</br>Kinestésico: 30</p>
+                        <p class="card-text">Resultados:</br>
+                            {% for key, value in styleLearning.values.items %}
+                                <strong>{{ key|title }}:</strong> {{ value }}<br>
+                            {% endfor %}
                     </div>
-                    <p class="card-text text-center"><small class="text-body-secondary">Hace 3 minutos</small></p>
+                    <p class="card-text text-center"><small class="text-body-secondary">{{styleLearning.created}}</small></p>
                 </div>
             </div>
             <div class="col-md-8  text-bg-light p-4 rounded-5">
-                <h4 class="fw-bold text-primary">Descripción del Estilo de Aprendizaje Auditivo</h4>
-                <p>El estilo de aprendizaje auditivo es ideal para aquellas personas que aprenden mejor escuchando. Los
-                    individuos auditivos son más receptivos a la información presentada verbalmente, ya sea a través de
-                    explicaciones, conversaciones o grabaciones. Tienen la habilidad de captar y retener detalles que
-                    escuchan, lo que les permite comprender y recordar conceptos con facilidad.</p>
-                <p>Estas personas suelen preferir explicaciones orales a las escritas, y les resulta más efectivo
-                    estudiar en un entorno donde puedan escuchar información. Además, disfrutan participar en
-                    discusiones y debates, donde pueden procesar la información mientras hablan y escuchan a otros. La
-                    música suave o los sonidos de fondo también pueden ayudarles a concentrarse.</p>
-                <p>Algunas características adicionales incluyen la tendencia a recordar nombres mejor que rostros, la
-                    capacidad de seguir instrucciones verbales con facilidad y la preferencia por actividades grupales
-                    donde puedan intercambiar ideas de manera oral.</p>
-
+                <h4 class="fw-bold text-primary">Descripción del Estilo de Aprendizaje {{styleLearning.learningStyle.name}}</h4>
+                {{styleLearning.learningStyle.description  | safe}}
             </div>
         </div>
         <hr>
@@ -93,32 +86,40 @@
             <div class="col-12">
                 <h4 class="fw-bold text-primary">Actividades Recomendadas para Mejorar el Estudio</h4>
                 <ul>
-                    <li><strong>Escuchar audiolibros y podcasts:</strong> El uso de recursos auditivos como audiolibros
-                        y
-                        podcasts permite a los aprendices auditivos reforzar el contenido que han aprendido de manera
-                        efectiva.</li>
-                    <li><strong>Grabar clases o explicaciones:</strong> Grabar las clases o sus propias explicaciones y
-                        escucharlas durante el repaso puede ayudar a consolidar la información.</li>
-                    <li><strong>Participar en discusiones en grupo:</strong> Unirse a grupos de estudio o debates donde
-                        puedan hablar y escuchar activamente es una excelente manera de procesar y retener información.
-                    </li>
-                    <li><strong>Leer en voz alta:</strong> Leer el material de estudio en voz alta facilita la
-                        memorización
-                        y comprensión de los conceptos, aprovechando su habilidad auditiva.</li>
-                    <li><strong>Utilizar técnicas de enseñanza:</strong> Explicar conceptos en voz alta a otros o hacer
-                        simulacros de enseñanza refuerza su comprensión y retención del material.</li>
-                    <li><strong>Incorporar música de fondo:</strong> Escuchar música suave mientras estudian puede
-                        ayudar a
-                        mantener la concentración y mejorar el rendimiento, aunque se debe evitar que sea una
-                        distracción.
-                    </li>
-                    <li><strong>Uso de rimas o canciones:</strong> Crear rimas, canciones o frases pegajosas que ayuden
-                        a
-                        recordar la información clave puede ser una estrategia efectiva para este tipo de aprendices.
-                    </li>
+                    {{styleLearning.learningStyle.actividades | safe}}
                 </ul>
             </div>
         </div>
+        {% else %}
+        <div class="row border bg-light">
+            <div class="col-12 text-center p-5 ">
+                <h3 class="text-dark fw-bold">No se ha realizado el test de estilos de aprendizaje</h3>
+                <a class="btn btn-primary mt-2" href="{% url 'App:AppTest' %}">Realizar test</a>
+            </div>
+        </div>
+
+        {% endif %}
     </div>
+
+<script>
+    var styleLearning = {{styleLearning.values| safe}}
+    console.log(styleLearning);
+    const url = new URL('/App/score/', window.location.origin);
+    url.searchParams.append('visual', styleLearning.visual);
+    url.searchParams.append('auditivo', styleLearning.auditivo);
+    url.searchParams.append('kinestesico', styleLearning.kinestesico);
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al cargar el gráfico: ' + response.statusText);
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            const graphUrl = URL.createObjectURL(blob);
+            document.getElementById('learning-style-graph').src = graphUrl;
+        })
+        .catch(error => console.error('Error al cargar el gráfico:', error));
+</script>
 
     {% endblock %}
