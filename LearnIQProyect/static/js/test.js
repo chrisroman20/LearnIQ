@@ -12,14 +12,12 @@ fetch('/static/js/Preguntas.json')
         return response.json();
     })
     .then(data => {
-        // Extraer preguntas de todos los módulos
         data.modules.forEach(module => {
             questions.push(...module.questions.map(question => ({
                 ...question,
-                type: module.type // Añadir el tipo de módulo a cada pregunta
+                type: module.type 
             })));
         });
-        console.log('Preguntas cargadas:', questions); // Para verificar que las preguntas se cargaron correctamente
     })
     .catch(error => console.error('Error al cargar las preguntas:', error));
 
@@ -70,7 +68,7 @@ function startTimer() {
     timerBar.style.backgroundColor = "green";
     startTime = new Date();
 
-    clearInterval(timerInterval); // Asegúrate de detener cualquier temporizador anterior
+    clearInterval(timerInterval); 
     timerInterval = setInterval(() => {
         timeLeft--;
         const percentage = (timeLeft / 15) * 100;
@@ -87,7 +85,7 @@ function startTimer() {
 
 
 function selectAnswer(answerIndex) {
-    clearInterval(timerInterval); // Detén el temporizador inmediatamente
+    clearInterval(timerInterval); 
     recordResponseTime(answerIndex);
     nextQuestion();
 }
@@ -102,7 +100,7 @@ function recordResponseTime(answerIndex) {
         correctOption: questions[currentQuestion].options[questions[currentQuestion].correct_option],
         isCorrect: isCorrect,
         responseTime: responseTime,
-        type: questions[currentQuestion].type // Asegúrate de que el tipo está incluido
+        type: questions[currentQuestion].type 
     });
 
     console.log(`Tiempo de respuesta para la pregunta ${currentQuestion + 1}: ${responseTime}s : ${isCorrect ? 'Correcto' : 'Incorrecto'}`);
@@ -116,14 +114,10 @@ function nextQuestion() {
         startTimer();
     } else {
         console.log('Resultados finales:', JSON.stringify(results, null, 2)); // Imprime los resultados finales antes de mostrar el resultado
-        showResult(); // Mostrar el resultado y el gráfico al finalizar
+        showResult(); 
     }
 }
 
-
-
-
-// Asignar el evento de clic al botón de comenzar
 document.getElementById('start-button').addEventListener('click', startQuiz);
 
 
@@ -141,7 +135,6 @@ function calculateIA(PAM, TPM, weight = 1) {
     return (PAM / TPM) * weight;
 }
 function determineLearningStyle(results) {
-    // Filtrar las respuestas por tipo de módulo
     const visualResponses = results.filter(response => response.type === "visual");
     const auditoryResponses = results.filter(response => response.type === "auditivo");
     const kinestheticResponses = results.filter(response => response.type === "kinestesico");
@@ -155,7 +148,6 @@ function determineLearningStyle(results) {
     console.log('Auditory IA:', auditoryIA);
     console.log('Kinesthetic IA:', kinestheticIA);
 
-    // Determinar el estilo de aprendizaje predominante
     const maxIA = Math.max(visualIA, auditoryIA, kinestheticIA);
 
     if (maxIA === visualIA) return "visual";
@@ -179,7 +171,6 @@ function showResult() {
 
 
     const correctAnswers = results.filter(result => result.isCorrect);
-    // Calcular el puntaje para cada tipo basándote solo en las respuestas correctas
     const visualScore = correctAnswers.filter(result => result.type === "visual").length;
     const auditoryScore = correctAnswers.filter(result => result.type === "auditivo").length;
     const kinestheticScore = correctAnswers.filter(result => result.type === "kinestesico").length;
@@ -195,14 +186,12 @@ function showResult() {
     url.searchParams.append('auditivo', auditoryIA);
     url.searchParams.append('kinestesico', kinestheticIA);
 
-    // Mostrar el mensaje de resultado y el gráfico
     document.getElementById("quiz-container").innerHTML = `
         <h2>¡Cuestionario finalizado!</h2>
         <p>Tu estilo de aprendizaje predominante es: ${learningStyle}</p>
         <img id="learning-style-graph" src="" alt="Gráfico de estilos de aprendizaje" />
     `;
 
-    // Solicitar el gráfico al servidor
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -213,6 +202,35 @@ function showResult() {
         .then(blob => {
             const graphUrl = URL.createObjectURL(blob);
             document.getElementById('learning-style-graph').src = graphUrl;
+            saveData(visualIA,auditoryIA,kinestheticIA)
         })
         .catch(error => console.error('Error al cargar el gráfico:', error));
 }
+
+
+function saveData(visualIA, auditoryIA, kinestheticIA) {
+const csrfToken = document.querySelector('[name=csrf_token]').value;
+console.log(csrfToken)
+    fetch('/App/Test/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken, 
+        },
+        body: JSON.stringify({ visualIA, auditoryIA, kinestheticIA }),
+    }).then(response => {
+        if (!response.ok) {
+            const toastLiveExample = document.getElementById('liveToastBad');
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+            toastBootstrap.show();
+            throw new Error(response);
+        } else {
+            const toastLiveExample = document.getElementById('liveToastGood');
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+            toastBootstrap.show();
+            console.log(response);
+        }
+    }).catch(error => console.error('Error al guardar los datos:', error));
+}
+
+

@@ -125,8 +125,6 @@ body {
     transition: opacity 1s ease-in-out;
 }
 
-
-
 .intro-text {
     font-size: 2.5rem;
     animation: pulse 2s infinite;
@@ -171,5 +169,8 @@ body {
     display: block;
     margin: 0 auto;
 }
+
+
+
 
 

@@ -4,21 +4,24 @@
 {% block title %}Cuestionario{% endblock %}
 
 {% block content %}
-
+<input type="hidden" name="csrf_token" value="{{ csrf_token }}">
 <div id="intro-container" class="d-flex justify-content-center align-items-center">
     <div class="text-center">
-        <img src="{% static 'img/Logo/Logo pequeno.png' %}" alt="LearnIQ Logo" class="img-fluid rounded-5 w-25 mb-4" >
+        <img src="{% static 'img/Logo/Logo pequeno.png' %}" alt="LearnIQ Logo" class="img-fluid rounded-5 w-25 mb-4">
         <h1 class=" fw-bold">¡Bienvenido al cuestionario de estilos de aprendizaje!</h1>
         <h1 class="fw-bold">¿Estás listo?</h1>
         <div class="d-flex justify-content-center">
-            <button id="start-button" class="pulso p-2 fs-1 shadow fw-bold btn btn-primary mt-4 d-flex align-items-center text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
-                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>
-                </svg> 
+            <button id="start-button"
+                class="pulso p-2 fs-1 shadow fw-bold btn btn-primary mt-4 d-flex align-items-center text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor"
+                    class="bi bi-play-fill" viewBox="0 0 16 16">
+                    <path
+                        d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" />
+                </svg>
                 Comenzar
             </button>
         </div>
-        
+
     </div>
 </div>
 
@@ -28,7 +31,8 @@
             <h1 id="question" class="card-title"></h1>
             <div id="media-container" class="my-4"></div>
             <div class="progress mb-4">
-                <div id="timer-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"></div>
+                <div id="timer-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar">
+                </div>
             </div>
             <div id="buttons-container">
                 <button class="btn btn-primary btn-lg mb-2 w-100" onclick="selectAnswer(0)">Respuesta 1</button>
@@ -39,6 +43,33 @@
         </div>
     </div>
 </div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToastGood" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="{% static 'img/Logo/Logo pequeno.png' %}" class="img-fluid rounded-5 me-2 " alt="..." >
+            <strong class="me-auto">Datos guardados correctamente!</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Ya puedes consultar tu estilo de aprendizaje en tu perfil.
+        </div>
+    </div>
+    <div id="liveToastBad" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="{% static 'img/Logo/Logo pequeno.png' %}" class="rounded me-2" alt="..." >
+            <strong class="me-auto">LearnIQ</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            !Oh no! Algo salió mal ...
+        </div>
+    </div>
+
+</div>
+
 <script src="{% static 'js/test.js' %}"></script>
 
 {% endblock %}
