@@ -32,6 +32,7 @@ LOCAL_APPS = [
     'Auth',
     'App',
     'Users',
+    'Quiz',
 ]
 
 THIRD_APPS = [
@@ -80,11 +81,11 @@ WSGI_APPLICATION = 'LearnIQProyect.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),   # O la IP de tu servidor de base de datos
-        'PORT': os.getenv('DB_PORT')    
+        'NAME': 'LearnIQ',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',   # O la IP de tu servidor de base de datos
+        'PORT': '5432'    
     }
 }
 

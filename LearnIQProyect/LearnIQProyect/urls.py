@@ -11,6 +11,7 @@ urlpatterns = [
     path('Auth/', include("Auth.urls")),
     path('Users/', include("Users.urls")),
     path('App/', include("App.urls")),
+    path('Quiz/', include("Quiz.urls")),
 ]
 
 if settings.DEBUG:

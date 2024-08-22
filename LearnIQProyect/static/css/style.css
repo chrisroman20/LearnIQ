@@ -171,6 +171,41 @@ body {
 }
 
 
+<<<<<<< Updated upstream
 
 
 
+=======
+.img-quiz {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem auto;
+}
+
+.answer-option {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.answer-option:hover {
+    background-color: #f8f9fa;
+    border-color: #007bff;
+}
+
+.answer-option.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+}
+
+
+
+@media (max-width: 767px) {
+    .img-quiz {
+        max-width: 80%;
+    }
+}
+>>>>>>> Stashed changes

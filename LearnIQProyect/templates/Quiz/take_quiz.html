@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+{% block title %}Prueba{% endblock %}
+{% block content %}
+<div class="">
+    <div class="text-center">
+        <img src="{% static 'img/Q.png' %}" class="img-fluid" id="img-quiz">
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        {% for question in questions %}
+        <div class="question">
+            {% if question.question_type == 'kinesthetic' %}
+            <div class="div" class="d-flex ">
+                <h3 class="text-center rounded p-3" id="pregunta">{{ question.text }}</h3>
+            </div>
+            {% endif %}
+            {% if question.image %}
+            <div class="div" class="d-flex ">
+                <h3 class="text-center rounded p-3" id="pregunta">Analiza la imagen y selecciona la respuesta correcta
+                </h3>
+            </div>
+            <div class="text-center">
+                <img src="{{ question.image.url }}" alt="Visual Question" class="img-quiz img-fluid mb-2"/>
+            </div>
+            {% elif question.audio_file %}
+            <div class="div" class="d-flex ">
+                <h3 class="text-center rounded p-3" id="pregunta">Escucha el archivo de audio y selecciona la respuesta
+                    correcta</h3>
+            </div>
+            <div class="text-center">
+                <audio controls>
+                    <source src="{{ question.audio_file.url }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            {% endif %}
+            <div class="container text-center">
+                <div class="row">
+                    {% for answer in question.answers.all %}
+                    <div class="col-md-6 p-0">
+                        <div class="answer-option mx-1" onclick="selectOption('{{ answer.id }}', this)">
+                            <input type="radio" id="{{ answer.id }}" name="question_{{ question.id }}" value="{{ answer.id }}" class="form-check-input" required>
+                            <label for="{{ answer.id }}" class="form-check-label ml-2 w-100">{{ answer.text }}</label>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        </br>
+        {% endfor %}
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary mb-2">Enviar</button>
+        </div>
+    </form>
+</div>
+<script>
+function selectOption(id, element) {
+    // Desmarcar todas las opciones en el grupo actual
+    const allOptions = document.querySelectorAll(`input[name="${element.querySelector('input').name}"]`);
+    allOptions.forEach(option => {
+        option.parentElement.classList.remove('selected');
+    });
+    
+    // Marcar la opción seleccionada
+    document.getElementById(id).checked = true;
+    element.classList.add('selected');
+    const input = document.getElementById(id);
+    if (input) {
+        input.checked = true;  // Marcar el input como seleccionado
+    }
+}
+</script>
+{% endblock %}
