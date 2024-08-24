@@ -10,96 +10,102 @@
     {% endfor %}
 </div>
 {% endif %}
-<!-- <div class="row justify-content-center">
-    <div class="col-auto text-light ">
-        <h1><b>User profile</b></h1>
-    </div>
-</div> -->
+
 <div class="p-3 p-md-0">
-    <div class="row border p-5  rounded flex-column flex-md-row">
-        <div class="col-12 col-md-3 text-center text-md-center">
+    <div class="row border p-5 rounded flex-column flex-md-row">
+        <!-- Imagen y botón de edición -->
+        <div class="col-12 col-md-3 text-center">
             <img class="img-fluid rounded-circle mb-4" src="{{ user.image.url }}" width="250" height="250">
             <a class="btn btn-outline-primary" href="{% url 'Users:EditUser' user.id %}">
                 Editar perfil
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-pencil-square" viewBox="0 0 16 16">
-                    <path
-                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                    <path fill-rule="evenodd"
-                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
                 </svg>
             </a>
         </div>
-        <div
-            class="col-12 col-md-9 mt-3 mt-md-0 d-flex flex-column justify-content-center align-items-center text-center">
-            <div class="row  border rounded align-items-center p-1">
-                <h3 class="text-light mt-2">
-                    <b>{{ user.username }}</b>
-                    <span class="badge text-bg-primary">{{ user.UserRol }}</span>
-                </h3>
-            </div>
-            <div class="row align-items-center mt-2">
-                <div class="row mt-2 text-start text-md-start text-light">
+        
+        <!-- Información del usuario -->
+        <div class="col-12 col-md-9 d-flex flex-column justify-content-center align-items-center text-center text-md-start mt-3 mt-md-0">
+            <h3 class="text-light">
+                <b>{{ user.username }}</b>
+                <span class="badge text-bg-primary">{{ user.UserRol }}</span>
+            </h3>
+            <div class="row w-100 mt-2">
+                <div class="col-12 text-light">
                     <h5><b>Nombre:</b> {{ user.first_name }} {{ user.last_name }}</h5>
                 </div>
-                <div class="row mt-2 text-start text-md-start text-light">
+                <div class="col-12 text-light mt-2">
                     <h5><b>Correo electrónico:</b> {{ user.email }}</h5>
                 </div>
-                <div class="row mt-2 text-start text-md-start text-light">
+                <div class="col-12 text-light mt-2">
                     <h5><b>Teléfono:</b> {{ user.phone }}</h5>
                 </div>
-                <div class="row mt-2 text-start text-md-start text-light">
+                <div class="col-12 text-light mt-2">
                     <h5>Te uniste {{ user.date_joined }}</h5>
                 </div>
             </div>
         </div>
-
     </div>
+
+    <!-- Sección del estilo de aprendizaje -->
     <div class="row border p-5 my-4 rounded bg-light-50">
         {% if styleLearning %}
-        <h3 class="text-light fw-bold text-md-center">Estilo de aprendizaje</h3>
         <div class="row">
-            <div class="col-md-4 d-flex justify-content-center">
-
-                <div class="card shadow rounded-5" style="width: 24rem;">
-                    <img src="" class="card-img-top rounded-5 img-fluid" id="learning-style-graph"
-                        alt="Gráfico de Radar de Estilos de Aprendizaje">
-                    <div class="card-body">
+            <div class="col-12 text-center">
+                <h2 class="fw-bold text-primary">Estilo de Aprendizaje</h2>
+            </div>
+            <!-- Gráfico -->
+            <div class="col-md-4 d-flex justify-content-center mb-4 mb-md-0">
+                <div class="card shadow rounded-5 w-100">
+                    <img src="" class="card-img-top rounded-5 img-fluid" id="learning-style-graph" alt="Gráfico de Radar de Estilos de Aprendizaje">
+                    <div class="card-body text-center">
                         <h5 class="card-title fw-bold text-primary">{{styleLearning.learningStyle.name}}</h5>
                         <hr>
                         <p class="card-text">Resultados:</br>
                             {% for key, value in styleLearning.values.items %}
                                 <strong>{{ key|title }}:</strong> {{ value }}<br>
                             {% endfor %}
+                        </p>
                     </div>
                     <p class="card-text text-center"><small class="text-body-secondary">{{styleLearning.created}}</small></p>
                 </div>
             </div>
-            <div class="col-md-8  text-bg-light p-4 rounded-5">
-                <h4 class="fw-bold text-primary">Descripción del Estilo de Aprendizaje {{styleLearning.learningStyle.name}}</h4>
-                {{styleLearning.learningStyle.description  | safe}}
-            </div>
-        </div>
-        <hr>
-        <div class="row mt-2 rounded-5 shadow text-bg-light p-4">
 
-            <div class="col-12">
-                <h4 class="fw-bold text-primary">Actividades Recomendadas para Mejorar el Estudio</h4>
-                <ul>
-                    {{styleLearning.learningStyle.actividades | safe}}
-                </ul>
+            <!-- Descripción del estilo de aprendizaje -->
+            <div class="col-md-8 d-flex justify-content-center mb-4 mb-md-0">
+                <div class="card shadow rounded-5 w-100">
+                    <div class="card-body text-center">
+                        <h4 class="fw-bold text-primary">Descripción del Estilo de Aprendizaje {{styleLearning.learningStyle.name}}</h4>
+                        <div class="description-content">
+                            {{styleLearning.learningStyle.description  | safe}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actividades recomendadas -->
+            <div class="col-12 d-flex justify-content-center mt-2">
+                <div class="card shadow rounded-5 w-100">
+                    <div class="card-body text-center">
+                        <h4 class="fw-bold text-primary">Actividades Recomendadas para Mejorar el Estudio</h4>
+                        <ul>
+                            {{styleLearning.learningStyle.actividades | safe}}
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         {% else %}
         <div class="row border bg-light">
-            <div class="col-12 text-center p-5 ">
+            <div class="col-12 text-center p-5">
                 <h3 class="text-dark fw-bold">No se ha realizado el test de estilos de aprendizaje</h3>
                 <a class="btn btn-primary mt-2" href="{% url 'App:AppTest' %}">Realizar test</a>
             </div>
         </div>
-
         {% endif %}
     </div>
+</div>
 
 <script>
     var styleLearning = {{styleLearning.values| safe}}
@@ -121,5 +127,4 @@
         })
         .catch(error => console.error('Error al cargar el gráfico:', error));
 </script>
-
-    {% endblock %}
+{% endblock %}

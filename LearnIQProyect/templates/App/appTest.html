@@ -5,15 +5,15 @@
 
 {% block content %}
 <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
-<div id="intro-container" class="d-flex justify-content-center align-items-center">
+<div id="intro-container" style="display: none;" class="d-flex justify-content-center align-items-center">
     <div class="text-center">
-        <img src="{% static 'img/Logo/Logo pequeno.png' %}" alt="LearnIQ Logo" class="img-fluid rounded-5 w-25 mb-4">
+        <img src="{% static 'img/Logo/Logo pequeno.png' %}" alt="LearnIQ Logo" class="img-fluid rounded-5 m-5 w-25 mb-4">
         <h1 class=" fw-bold">¡Bienvenido al cuestionario de estilos de aprendizaje!</h1>
         <h1 class="fw-bold">¿Estás listo?</h1>
         <div class="d-flex justify-content-center">
             <button id="start-button"
-                class="pulso p-2 fs-1 shadow fw-bold btn btn-primary mt-4 d-flex align-items-center text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor"
+                class="pulso fs-1 shadow fw-bold btn btn-primary d-flex align-items-center p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="70" height="auto" fill="currentColor"
                     class="bi bi-play-fill" viewBox="0 0 16 16">
                     <path
                         d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" />
